@@ -1,7 +1,10 @@
+*{
+    text-align: center;
+}
 .tooltip {
     position: absolute;
     top: 28px;
-    right: -24px;
+    left: 42px;
     background: #000;
     font-size: 14px;
     color: white;
