@@ -1,14 +1,16 @@
 {
-
-  "manifest_version": 3,
-  "name": "Image Copier For Instsgram",
-  "version": "1.5",
-
-  "description": "Copies url of instagram image when clicked on an instagram image",
-  "content_scripts": [{
-    "matches": ["https://www.instagram.com/*"],
-    "js": ["copySrc.js"],
-    "css":["styles.css"]
-  }]
-
+   "action": {
+      "default_icon": "ig.png",
+      "default_popup": "popup.html",
+      "default_title": "Instagram Image Copier"
+   },
+   "content_scripts": [ {
+      "css": [ "styles.css" ],
+      "js": [ "copySrc.js" ],
+      "matches": [ "https://www.instagram.com/*" ]
+   } ],
+   "description": "Copies URL of Instagram image when clicked on an Instagram image or opens context menu when right clicked",
+   "manifest_version": 3,
+   "name": "Image Copier For Instagram",
+   "version": "2.2"
 }
