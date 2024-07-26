@@ -1,16 +1,12 @@
 //Context menu
 document.addEventListener("mousedown", (e) => {
-  //get the class name
-  var c = e.target.className;
-  //check for right mouse click and if the class is there , remove the class
-  if (e.target.classList.contains(c) && e.button === 2) {
-    e.target.classList.remove(c);
+  if(e.target.tagName=== "DIV" && (e.target.children.length === 0 || e.target.textContent==="")  && e.button === 2 && e.target.className!==""){
+    e.target.className="";
   }
 });
 
-
 //Left Click
-document.addEventListener("click", async(e) => {
+document.addEventListener("click",(e) => {
   
   function makeTooltip() {
     const tooltip = document.createElement("SPAN");
@@ -19,10 +15,9 @@ document.addEventListener("click", async(e) => {
     return tooltip;  
   }
 
-  if (e.target.tagName === "DIV") {
+  if (e.target.tagName === "DIV" && e.target.previousElementSibling?.children[0]?.tagName==="IMG") {
     
-    await navigator.clipboard.writeText(e.target.previousElementSibling.children[0].src)
-      .then(() => {
+     navigator.clipboard.writeText(e.target.previousElementSibling.children[0].src);
         
         let tooltip= makeTooltip();
         
@@ -30,14 +25,13 @@ document.addEventListener("click", async(e) => {
       
         setTimeout(() => {
           tooltip.remove();
-        }, 1500);
-      })
-      .catch(err=>{console.error(err)})
+          }, 1500);
+  
   }
 
 if(e.target.tagName==="IMG"){
   
-  await navigator.clipboard.writeText(e.target.src)
+   navigator.clipboard.writeText(e.target.src);
   
   let tooltip= makeTooltip();
   
@@ -48,3 +42,4 @@ if(e.target.tagName==="IMG"){
   }, 1500);
  }
 });
+
