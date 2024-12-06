@@ -14,32 +14,20 @@ document.addEventListener("click",(e) => {
     tooltip.classList.add("tooltip");
     return tooltip;  
   }
-
-  if (e.target.tagName === "DIV" && e.target.previousElementSibling?.children[0]?.tagName==="IMG") {
-    
-     navigator.clipboard.writeText(e.target.previousElementSibling.children[0].src);
-        
-        let tooltip= makeTooltip();
-        
-        e.target.appendChild(tooltip);
-      
-        setTimeout(() => {
-          tooltip.remove();
-          }, 1500);
   
+  function copyToClipboardAndshowMessage(url,appender){
+    navigator.clipboard.writeText(url);
+    let tooltip= makeTooltip();
+    appender.appendChild(tooltip);
+    setTimeout(() => {tooltip.remove();}, 2500);
   }
 
-if(e.target.tagName==="IMG"){
-  
-   navigator.clipboard.writeText(e.target.src);
-  
-  let tooltip= makeTooltip();
-  
-  e.target.parentElement.appendChild(tooltip);
+  if (e.target.tagName === "DIV" && e.target.previousElementSibling?.children[0]?.tagName==="IMG") {
+    copyToClipboardAndshowMessage(e.target.previousElementSibling.children[0].src,e.target)
+  }
 
-  setTimeout(() => {
-    tooltip.remove();
-  }, 1500);
- }
-});
+  if(e.target.tagName==="IMG"){
+    copyToClipboardAndshowMessage(e.target.src,e.target.parentElement) 
+  }
+  });
 
