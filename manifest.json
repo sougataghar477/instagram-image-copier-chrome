@@ -13,7 +13,7 @@
    "description": "Copies URL of Instagram image when clicked on an Instagram image or opens context menu when right clicked",
    "manifest_version": 3,
    "name": "Image Copier For Instagram",
-   "version": "2.9",
+   "version": "3.0",
    "background": {
       "service_worker": "background.js","type":"module"
     }
