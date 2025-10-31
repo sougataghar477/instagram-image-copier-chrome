@@ -22,10 +22,12 @@ document.addEventListener("click",(e) => {
   }
   
   function copyToClipboardAndshowMessage(url,appender){
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(url)
+    .then(()=>{
     let tooltip= makeTooltip();
     appender.appendChild(tooltip);
-    setTimeout(() => {tooltip.remove();}, 2500);
+    setTimeout(() => {tooltip.remove()}, 2500)})
+    .catch((err)=> {alert("Failed to copy,"+err)})
   }
 
   if (e.target.tagName === "DIV" && e.target.previousElementSibling?.children[0]?.tagName==="IMG") {
